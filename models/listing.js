@@ -69,7 +69,7 @@ const listingSchema = new Schema(
         "rooms",
         "luxury",
         "hotels",
-        "Villa",
+        "villa",
         "mountain",
         "beach",
         "cabins",
