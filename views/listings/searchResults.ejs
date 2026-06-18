@@ -26,11 +26,39 @@
 <% layout("/layouts/boilerplate") %>
 
 <div class="container mt-4">
-  <h3 class="mb-4">Search results for "<%= query %>"</h3>
 
   <div class="row">
     <% if (listings.length === 0) { %>
-      <h4>No results found.</h4>
+      <div class="text-center py-5">
+         <i class="fa-solid fa-magnifying-glass-location text-danger"
+           style="font-size:70px;"></i>
+             <h2 class="mt-4 fw-bold">
+            No Listings Found
+        </h2>
+
+
+        <p class="text-muted fs-5">
+            Sorry, we couldn't find any destination matching
+            <strong>"<%= query %>"</strong>.
+        </p>
+
+        <p class="text-secondary">
+            Try another city, country, or explore all available listings.
+        </p>
+         <div class="mt-4">
+
+            <a href="/listings"
+               class="btn btn-danger px-4 me-2">
+                Browse All Listings
+            </a>
+
+            <a href="javascript:history.back()"
+               class="btn btn-outline-dark px-4">
+                Go Back
+            </a>
+
+        </div>
+      </div>
     <% } %>
 
     <% listings.forEach(listing => { %>

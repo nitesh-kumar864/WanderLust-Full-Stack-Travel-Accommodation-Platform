@@ -45,7 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const savedState = localStorage.getItem("offerEnabled") === "true";
+  const savedState = localStorage.getItem("offerEnabled") === null
+  ? true
+  : localStorage.getItem("offerEnabled") === "true";
 
   if (offerToggle) {
     offerToggle.checked = savedState;
