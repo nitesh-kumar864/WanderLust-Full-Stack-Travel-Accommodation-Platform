@@ -99,13 +99,24 @@ app.use("/", pageRouter);
 
 // ERROR HANDLING
 app.use((req, res, next) => {
-  next(new ExpressError(404, "Page not found!"));
+  next(new ExpressError(404));
 });
 
 app.use((err, req, res, next) => {
-  const { statusCode = 500, message = "Something went wrong" } = err;
-  res.status(statusCode).render("error.ejs", { message });
+  const statusCode = err.statusCode || 500;
+    let title = "Something went wrong";
+    let message = err.message;
+    if (statusCode === 404) {
+        title = "Oops! We couldn't find that page.";
+        message =
+            "The page you're looking for doesn't exist";
+    }
+       res.status(statusCode).render("error.ejs", {
+        title,
+        message,
+    });
 });
+
 
 
 // SERVER
